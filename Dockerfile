@@ -13,6 +13,6 @@ FROM dependencies AS app
 WORKDIR /sinatra/
 USER sinatra
 ENV APP_HOME /sinatra/
-ADD --chown=4242:4242 .. $APP_HOME
+ADD --chown=4242:4242 . $APP_HOME
 CMD ["bundle", "exec", "rackup", "-E", "production", "-p", "8000", "--host", "0.0.0.0"]
 
