@@ -1,0 +1,14 @@
+version: "3.6"
+services:
+  hearthstone:
+    build: .
+    ports:
+      - "8000:8000"
+    links:
+      - redis
+    environment:
+      - REDIS_URL=redis://redis/
+      - BNET_ID=${BNET_ID}
+      - BNET_SECRET=${BNET_SECRET}
+  redis:
+    image: redis
