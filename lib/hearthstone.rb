@@ -38,10 +38,10 @@ class Hearthstone
       page1 = JSON.parse(BattleNetApi.get('cards', { class: h_class, manaCost: '7,8,9,10', rarity: 'legendary', locale: 'en_US' }))
       return page1['cards'] unless page1['pageCount'] > 1 # return early if there's only 1 page of results
 
-      all_cards << page1['cards']
+      all_cards += page1['cards']
       (2..page1['pages']).each do |page|
         page = JSON.parse(BattleNetApi.get('cards', { class: h_class, manaCost: '7,8,9,10', rarity: 'legendary', locale: 'en_US', page: page }))
-        all_cards << page['cards']
+        all_cards += page['cards']
       end
       all_cards
     end
